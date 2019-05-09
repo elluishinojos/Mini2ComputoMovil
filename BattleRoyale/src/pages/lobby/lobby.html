@@ -1,0 +1,16 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Mini 2 Cómputo Móvil
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-item>
+    <ion-label stacked>Establecer Nickname</ion-label>
+    <ion-input type="text" [(ngModel)]="nickname" placeholder="Nickname"></ion-input>
+  </ion-item>
+  <button margin-top margin-bottom color="secondary" ion-button full (click)="joinGame(true)" [disabled]="nickname === ''">Hostear</button>
+  <button margin-top ion-button full (click)="joinGame(false)" [disabled]="nickname === ''">Unirse</button>
+</ion-content>
