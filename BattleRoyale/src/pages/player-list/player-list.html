@@ -1,0 +1,15 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Lista de Jugadores</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list inset>
+    {{nickname}}
+  </ion-list>
+</ion-content>
+<ion-footer padding>
+  <button *ngIf="usuario" ion-button block (click)="startGame()">Comenzar</button>
+  <button *ngIf="!usuario" [disabled]="!usuario" ion-button block (click)="startGame()">Esperar al host</button>
+</ion-footer>
