@@ -1,17 +1,17 @@
 <ion-content padding>
-  <h1 text-center>Soy un game over :c</h1>
   <div class="center">
     <img src="assets/imgs/explotion.jpg">
   </div>
-
-  <div text-center>
-    <h3>Sacudidas</h3>
-    <h1>{{sacudidas}}</h1>
-  </div>
-
-  <div text-center>
-    <h3>Nickname</h3>
-    <h1>{{nickname}}</h1>
-  </div>
-  <button ion-button block (click)="cerrar()"> Cerrar</button>
+  <h1 text-center>Soy un game over :c</h1>
+  <ion-list>
+    <ion-list-header>
+      <h3>Nickname: {{nickname}}</h3>
+    </ion-list-header>
+    <ion-item>
+      <h3>Sacudidas: {{sacudidas}}</h3>
+    </ion-item>
+  </ion-list>
 </ion-content>
+<ion-footer padding>
+  <button ion-button block (click)="cerrar()"> Cerrar</button>
+</ion-footer>
