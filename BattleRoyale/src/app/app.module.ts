@@ -10,6 +10,7 @@ import { GamePage, LobbyPage, PlayerListPage, GameOverPage } from '../pages/page
 import { Shake } from '@ionic-native/shake';
 
 import { SocketIoModule, SocketIoConfig } from 'ng-socket-io';
+import { SocketProvider } from '../providers/socket/socket';
 const config: SocketIoConfig = { url: 'http://localhost:3001', options: {} };
 
 
@@ -40,7 +41,8 @@ const config: SocketIoConfig = { url: 'http://localhost:3001', options: {} };
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    Shake
+    Shake,
+    SocketProvider
   ]
 })
 export class AppModule {}

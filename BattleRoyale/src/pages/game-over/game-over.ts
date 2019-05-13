@@ -1,3 +1,4 @@
+import { SocketProvider } from './../../providers/socket/socket';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
@@ -17,12 +18,13 @@ export class GameOverPage {
   nickname: string;
   sacudidas: number;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public socket: SocketProvider) {
     this.nickname = this.navParams.get('nickname');
     this.sacudidas = this.navParams.get('shake');
   }
 
   cerrar() {
+    this.socket.disconnect();
     this.navCtrl.popToRoot();
   }
 

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavParams, ToastController, Platform, NavController } from 'ionic-angular';
-import { Socket } from 'ng-socket-io';
+import { SocketProvider } from '../../providers/socket/socket';
 import { Observable } from 'rxjs/Observable';
 import { Shake } from '@ionic-native/shake';
 import { GameOverPage } from "../pages.index";
@@ -21,7 +21,7 @@ export class GamePage {
 
   constructor(
     private navParams: NavParams,
-    private socket: Socket,
+    private socket: SocketProvider,
     private platform: Platform,
     private shake: Shake,
     private toastCtrl: ToastController,
@@ -39,11 +39,11 @@ export class GamePage {
 
     this.nickname = this.navParams.get('nickname');
 
-    //this.getMessages().subscribe(message => {
+    //this.socket.getMessages().subscribe(message => {
     //  this.messages.push(message);
     //});
 
-    this.getUsers().subscribe(data => {
+    this.socket.getUsers().subscribe(data => {
       let user = data['user'];
       if (data['event'] === 'left') {
         this.showToast('User left: ' + user);
@@ -56,18 +56,14 @@ export class GamePage {
   startGame() {
     var interval = setInterval(function () {
       this.timer++;
-      if (this.timer % 3 == 0) {
+      if (this.timer % 2 == 0) {
         this.life--;
       }
       if (this.life == 0) {
         clearInterval(interval)
-      this.gameOver();
-    }
+        this.gameOver();
+      }
     }.bind(this), 1000)
-
-
-
-    
   }
 
   gameOver() {
@@ -79,24 +75,6 @@ export class GamePage {
   //  this.socket.emit('add-message', { text: this.message });
   //  this.message = '';
   //}
-
-  getMessages() {
-    let observable = new Observable(observer => {
-      this.socket.on('message', (data) => {
-        observer.next(data);
-      });
-    })
-    return observable;
-  }
-
-  getUsers() {
-    let observable = new Observable(observer => {
-      this.socket.on('users-changed', (data) => {
-        observer.next(data);
-      });
-    });
-    return observable;
-  }
 
   ionViewWillLeave() {
     this.socket.disconnect();
