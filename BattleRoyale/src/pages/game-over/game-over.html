@@ -4,14 +4,23 @@
   </div>
   <h1 text-center>Soy un game over :c</h1>
   <ion-list>
-    <ion-list-header>
-      <h3>Nickname: {{nickname}}</h3>
-    </ion-list-header>
+    <ion-grid>
+      <ion-row>
+        <ion-col col-2>
+          n
+        </ion-col>
+        <ion-col col-5>
+          <h4>Nickname: {{nickname}}</h4>
+        </ion-col>
+        <ion-col col-5>
+          <h4>Sacudidas: {{sacudidas}}</h4>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
     <ion-item>
-      <h3>Sacudidas: {{sacudidas}}</h3>
     </ion-item>
   </ion-list>
 </ion-content>
-<ion-footer padding>
+<ion-footer padding no-border>
   <button ion-button block (click)="cerrar()"> Cerrar</button>
 </ion-footer>

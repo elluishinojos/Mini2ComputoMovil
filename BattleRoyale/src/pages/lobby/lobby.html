@@ -1,16 +1,20 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>
+  <ion-navbar color="bluedarker">
+    <ion-title text-center>
       Mini 2 Cómputo Móvil
     </ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <ion-item>
-    <ion-label stacked>Establecer Nickname</ion-label>
-    <ion-input type="text" [(ngModel)]="nickname" placeholder="Nickname"></ion-input>
+<ion-content padding class="fondoazul">
+  <div class="center">
+    <img src="assets/imgs/logo.png">
+  </div>
+  <ion-item color="bluenormal">
+    <ion-label stacked color="light">Establecer Nickname</ion-label>
+    <ion-input type="text" [(ngModel)]="nickname" placeholder="Nickname" color="light"></ion-input>
   </ion-item>
-  <button margin-top margin-bottom color="secondary" ion-button full (click)="joinGame(true)" [disabled]="nickname === ''">Hostear</button>
-  <button margin-top ion-button full (click)="joinGame(false)" [disabled]="nickname === ''">Unirse</button>
+  <button round margin-top margin-bottom color="bluelightest" ion-button full (click)="joinGame(true)"
+    [disabled]="nickname === ''">Hostear</button>
+  <button round margin-top ion-button full (click)="joinGame(false)" [disabled]="nickname === ''">Unirse</button>
 </ion-content>
