@@ -5,7 +5,7 @@ import { Observable } from 'rxjs/Observable';
 import { Shake } from '@ionic-native/shake';
 import { GameOverPage } from "../pages.index";
 import { Media, SOUNDS } from "../../data/data.media";
-
+import { NativeAudio } from '@ionic-native/native-audio';
 
 @IonicPage()
 @Component({
@@ -29,10 +29,14 @@ export class GamePage {
     private platform: Platform,
     private shake: Shake,
     private toastCtrl: ToastController,
-    private navCtrl: NavController
+    private navCtrl: NavController,
+    private nativeAudio: NativeAudio
   ) {
-    //this.tiktokSound = TIKTOK.slice(0);
     this.mediaSound = SOUNDS.slice(0);
+    this.nativeAudio.preloadSimple('ticking', 'assets/sounds/ticking.wav').then(() => {
+
+      this.nativeAudio.loop('ticking').then(() => console.log('uniqueId1 is done playing'));
+    });
 
     this.startGame()
 
@@ -120,7 +124,8 @@ export class GamePage {
   }
 
   ionViewWillLeave() {
-    this.socket.disconnect();
+
+    this.nativeAudio.unload('ticking').then(()=>{});
   }
 
   showToast(msg) {

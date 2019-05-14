@@ -8,6 +8,7 @@ import { MyApp } from './app.component';
 import { GamePage, LobbyPage, PlayerListPage, GameOverPage } from '../pages/pages.index';
 
 import { Shake } from '@ionic-native/shake';
+import { NativeAudio } from '@ionic-native/native-audio';
 
 import { SocketIoModule, SocketIoConfig } from 'ng-socket-io';
 const config: SocketIoConfig = { url: 'http://localhost:3001', options: {} };
@@ -40,7 +41,8 @@ const config: SocketIoConfig = { url: 'http://localhost:3001', options: {} };
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    Shake
+    Shake,
+    NativeAudio
   ]
 })
 export class AppModule {}
