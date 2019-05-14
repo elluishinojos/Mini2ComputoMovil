@@ -4,7 +4,8 @@ import { Socket } from 'ng-socket-io';
 import { Observable } from 'rxjs/Observable';
 import { Shake } from '@ionic-native/shake';
 import { GameOverPage } from "../pages.index";
-
+import { Media, SOUNDS } from "../../data/data.media";
+import { NativeAudio } from '@ionic-native/native-audio';
 
 @IonicPage()
 @Component({
@@ -15,9 +16,12 @@ export class GamePage {
   public timer = 0;
   nickname = '';
   sacudidas: number = 0;
-  life: number = 100;
+  life: number = 10;
   //messages = [];
   //message = '';
+  audio = new Audio();
+  audioTiempo: any;
+  mediaSound: Media[] = [];
 
   constructor(
     private navParams: NavParams,
@@ -25,8 +29,14 @@ export class GamePage {
     private platform: Platform,
     private shake: Shake,
     private toastCtrl: ToastController,
-    private navCtrl: NavController
+    private navCtrl: NavController,
+    private nativeAudio: NativeAudio
   ) {
+    this.mediaSound = SOUNDS.slice(0);
+    this.nativeAudio.preloadSimple('ticking', 'assets/sounds/ticking.wav').then(() => {
+
+      this.nativeAudio.loop('ticking').then(() => console.log('uniqueId1 is done playing'));
+    });
 
     this.startGame()
 
@@ -34,6 +44,7 @@ export class GamePage {
       this.shake.startWatch().subscribe(data => {
         this.sacudidas++;
         this.timer = 0;
+        this.reproducir(this.mediaSound[2]);
       });
     })
 
@@ -53,21 +64,35 @@ export class GamePage {
     });
   }
 
+  reproducir(sound: Media) {
+    if (sound.reproduciendo) {
+      sound.reproduciendo = false;
+      return;
+    }
+    console.log(sound);
+    this.audio.src = sound.audio;
+    this.audio.load();
+    this.audio.play();
+    sound.reproduciendo = true;
+    this.audioTiempo = setTimeout(() => sound.reproduciendo = false, sound.duracion * 1000);
+  }
+
+
   startGame() {
     var interval = setInterval(function () {
       this.timer++;
-      if (this.timer % 3 == 0) {
+      if (this.timer % 2 == 0) {
         this.life--;
       }
       if (this.life == 0) {
         clearInterval(interval)
-      this.gameOver();
-    }
+        this.gameOver();
+      }
     }.bind(this), 1000)
 
 
 
-    
+
   }
 
   gameOver() {
@@ -99,7 +124,8 @@ export class GamePage {
   }
 
   ionViewWillLeave() {
-    this.socket.disconnect();
+
+    this.nativeAudio.unload('ticking').then(()=>{});
   }
 
   showToast(msg) {
