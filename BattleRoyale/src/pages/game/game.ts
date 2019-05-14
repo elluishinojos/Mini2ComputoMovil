@@ -4,7 +4,7 @@ import { Socket } from 'ng-socket-io';
 import { Observable } from 'rxjs/Observable';
 import { Shake } from '@ionic-native/shake';
 import { GameOverPage } from "../pages.index";
-import { Media, TIKTOK, SHAKE } from "../../data/data.media";
+import { Media, SOUNDS } from "../../data/data.media";
 
 
 @IonicPage()
@@ -21,8 +21,7 @@ export class GamePage {
   //message = '';
   audio = new Audio();
   audioTiempo: any;
-  //tiktokSound: Media[] = [];
-  shakeSound: Media[] = [];
+  mediaSound: Media[] = [];
 
   constructor(
     private navParams: NavParams,
@@ -33,7 +32,7 @@ export class GamePage {
     private navCtrl: NavController
   ) {
     //this.tiktokSound = TIKTOK.slice(0);
-    this.shakeSound = SHAKE.slice(0);
+    this.mediaSound = SOUNDS.slice(0);
 
     this.startGame()
 
@@ -41,7 +40,7 @@ export class GamePage {
       this.shake.startWatch().subscribe(data => {
         this.sacudidas++;
         this.timer = 0;
-        this.reproducir(this.shakeSound[0]);
+        this.reproducir(this.mediaSound[2]);
       });
     })
 

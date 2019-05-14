@@ -4,24 +4,21 @@ export interface Media {
     reproduciendo: boolean;
 }
 
-export const EXPLOSION = [
+export const SOUNDS = [
     {
+        //0 => Explotion
         audio: "assets/sounds/explotion.wav",
         duracion: 4,
         reproduciendo: false
-    }
-];
-
-export const TIKTOK = [
+    },
     {
+        //1 => Ticking
         audio: "assets/sounds/ticking.wav",
         duracion: 9,
         reproduciendo: false
-    }
-];
-
-export const SHAKE = [
+    },
     {
+        //2 => Whip
         audio: "assets/sounds/whip.wav",
         duracion: 2,
         reproduciendo: false

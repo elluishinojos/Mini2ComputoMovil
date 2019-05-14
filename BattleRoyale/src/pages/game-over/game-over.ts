@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { Media, EXPLOSION } from "../../data/data.media";
+import { Media, SOUNDS } from "../../data/data.media";
 
 @IonicPage()
 @Component({
@@ -12,15 +12,15 @@ export class GameOverPage {
   sacudidas: number;
   audio = new Audio();
   audioTiempo: any;
-  explotionSound: Media[] = [];
+  mediaSound: Media[] = [];
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.nickname = this.navParams.get('nickname');
     this.sacudidas = this.navParams.get('shake');
-    this.explotionSound = EXPLOSION.slice(0);
+    this.mediaSound = SOUNDS.slice(0);
 
 
-    this.reproducir(this.explotionSound[0]);
+    this.reproducir(this.mediaSound[0]);
   }
   
   reproducir(sound: Media) {
