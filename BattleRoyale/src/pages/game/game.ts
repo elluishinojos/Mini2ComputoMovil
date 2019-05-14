@@ -15,7 +15,7 @@ export class GamePage {
   public timer = 0;
   nickname = '';
   sacudidas: number = 0;
-  life: number = 10;
+  life: number = 100;
   //messages = [];
   //message = '';
 
