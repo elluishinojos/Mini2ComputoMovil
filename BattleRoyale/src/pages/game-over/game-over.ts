@@ -20,7 +20,7 @@ export class GameOverPage {
     this.mediaSound = SOUNDS.slice(0);
 
 
-    this.reproducir(this.mediaSound[0]);
+    this.reproducir(this.mediaSound[3]);
   }
   
   reproducir(sound: Media) {
