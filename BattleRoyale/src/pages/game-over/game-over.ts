@@ -1,3 +1,4 @@
+import { SocketProvider } from './../../providers/socket/socket';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Media, SOUNDS } from "../../data/data.media";
@@ -14,7 +15,7 @@ export class GameOverPage {
   audioTiempo: any;
   mediaSound: Media[] = [];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public socket: SocketProvider) {
     this.nickname = this.navParams.get('nickname');
     this.sacudidas = this.navParams.get('shake');
     this.mediaSound = SOUNDS.slice(0);
@@ -37,6 +38,7 @@ export class GameOverPage {
   }
 
   cerrar() {
+    this.socket.disconnect();
     this.navCtrl.popToRoot();
   }
 
