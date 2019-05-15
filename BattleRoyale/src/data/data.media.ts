@@ -22,5 +22,11 @@ export const SOUNDS = [
         audio: "assets/sounds/whip.wav",
         duracion: 2,
         reproduciendo: false
+    },
+    {
+        //3 => Minecraft
+        audio: "assets/sounds/minecraft.wav",
+        duracion: 4,
+        reproduciendo: false
     }
 ];
