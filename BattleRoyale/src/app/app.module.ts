@@ -11,6 +11,7 @@ import { Shake } from '@ionic-native/shake';
 import { NativeAudio } from '@ionic-native/native-audio';
 
 import { SocketIoModule, SocketIoConfig } from 'ng-socket-io';
+import { SocketProvider } from '../providers/socket/socket';
 const config: SocketIoConfig = { url: 'http://localhost:3001', options: {} };
 
 
@@ -44,7 +45,8 @@ const config: SocketIoConfig = { url: 'http://localhost:3001', options: {} };
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     Shake,
-    NativeAudio
+    NativeAudio,
+    SocketProvider
   ]
 })
 export class AppModule {}
