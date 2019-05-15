@@ -1,0 +1,17 @@
+<ion-content padding class="fondoazul">
+  <div class="center">
+    <img src="assets/imgs/logo.png">
+    <p>RESULTADOS:</p>
+  </div>
+  <ion-grid>
+    <ion-row>
+      <ion-col offset-2 col-8>
+        <ion-list>
+          <ion-item *ngFor="let player of players; let lugar = index">
+            <span>{{lugar+1}}.- {{player.name}} - {{player.score}} sacudidas</span>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
