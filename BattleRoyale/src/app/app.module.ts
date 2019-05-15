@@ -5,7 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
-import { GamePage, LobbyPage, PlayerListPage, GameOverPage } from '../pages/pages.index';
+import { GamePage, LobbyPage, PlayerListPage, GameOverPage, ScoreListPage } from '../pages/pages.index';
 
 import { Shake } from '@ionic-native/shake';
 import { NativeAudio } from '@ionic-native/native-audio';
@@ -22,7 +22,8 @@ const config: SocketIoConfig = { url: 'http://localhost:3001', options: {} };
     GamePage, 
     LobbyPage,
     PlayerListPage, 
-    GameOverPage
+    GameOverPage,
+    ScoreListPage
   ],
   imports: [
     BrowserModule,
@@ -35,7 +36,8 @@ const config: SocketIoConfig = { url: 'http://localhost:3001', options: {} };
     GamePage, 
     LobbyPage,
     PlayerListPage, 
-    GameOverPage
+    GameOverPage,
+    ScoreListPage
   ],
   providers: [
     StatusBar,
