@@ -43,7 +43,7 @@ const config: SocketIoConfig = { url: 'http://localhost:3001', options: {} };
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     Shake,
-    NativeAudio
+    NativeAudio,
     SocketProvider
   ]
 })
