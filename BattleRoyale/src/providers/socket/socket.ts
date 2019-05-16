@@ -12,8 +12,13 @@ import { Socket } from 'ng-socket-io';
 @Injectable()
 export class SocketProvider {
 
+  hosts=[];
+  loosers=[];
+
   constructor(public http: HttpClient, public socket: Socket) {
-    console.log('Hello SocketProvider Provider');
+    this.socket.on('loosers', (array)=>{
+      this.loosers=array;
+    });
   }
 
   getUsers() {
@@ -32,6 +37,10 @@ export class SocketProvider {
       });
     })
     return observable;
+  }
+
+  getSocket():Socket{
+    return this.socket;
   }
 
   disconnect(){

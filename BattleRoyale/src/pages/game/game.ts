@@ -93,6 +93,7 @@ export class GamePage {
 
   gameOver() {
     this.navCtrl.push(GameOverPage, { 'shake': this.sacudidas, 'nickname': this.nickname });
+    this.socket.getSocket().emit('game-over',{name:this.nickname, sacudidas:this.sacudidas});
     this.socket.disconnect();
   }
 
