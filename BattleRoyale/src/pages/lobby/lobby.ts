@@ -21,7 +21,6 @@ export class LobbyPage {
     if (this.tipo) {
       this.socket.emit('host', {nickname:this.nickname, lat:27.4883564, long:-109.9882522});
     }
-
     console.log(this.tipo);
     this.navCtrl.push(PlayerListPage, { 'nickname': this.nickname, 'tipo': this.tipo });
   }
