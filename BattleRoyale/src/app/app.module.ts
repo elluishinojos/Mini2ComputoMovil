@@ -1,3 +1,4 @@
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
@@ -29,7 +30,8 @@ const config: SocketIoConfig = { url: 'http://localhost:3001', options: {} };
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    SocketIoModule.forRoot(config)
+    SocketIoModule.forRoot(config),
+    HttpClientModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -46,7 +48,8 @@ const config: SocketIoConfig = { url: 'http://localhost:3001', options: {} };
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     Shake,
     NativeAudio,
-    SocketProvider
+    SocketProvider,
+    HttpClient
   ]
 })
 export class AppModule {}
