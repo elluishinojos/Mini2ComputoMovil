@@ -24,8 +24,8 @@ io.on('connection', (socket) => {
   //  io.emit('message', {text: message.text, from: socket.nickname, created: new Date()});    
   //});
 
-  socket.on('game-start', () => {
-    socket.broadcast.emit()
+  socket.on('game-start', (nickname) => {
+    socket.broadcast.emit('start', nickname);
   });
 
   socket.on('game-over', (playerObj) => {
