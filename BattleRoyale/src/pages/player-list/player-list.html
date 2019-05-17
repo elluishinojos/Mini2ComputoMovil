@@ -1,6 +1,6 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>Lista de Jugadores</ion-title>
+  <ion-navbar color="bluedarker">
+    <ion-title>Bomb Shaker</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -9,7 +9,7 @@
     {{nickname}}
   </ion-list>
 </ion-content>
-<ion-footer padding>
-  <button *ngIf="usuario" ion-button block (click)="startGame()">Comenzar</button>
-  <button *ngIf="!usuario" [disabled]="!usuario" ion-button block (click)="startGame()">Esperar al host</button>
+<ion-footer padding no-border>
+  <button round *ngIf="usuario" ion-button block (click)="startGame()">Comenzar</button>
+  <button round *ngIf="!usuario" [disabled]="!usuario" ion-button block>Esperar al host</button>
 </ion-footer>

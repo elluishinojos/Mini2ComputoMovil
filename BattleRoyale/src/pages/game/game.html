@@ -1,61 +1,22 @@
-<ion-header>
-  <ion-navbar>
-    <ion-title>
-      {{nickname}}
-    </ion-title>
-  </ion-navbar>
-</ion-header>
-<ion-content>
+<ion-content class="fondoazul">
   <div class="center">
     <img src="assets/imgs/bomb.png">
+    <div class="text-center">
+      <p>Vida restante</p>
+      <p>{{life}}</p>
+    </div>
   </div>
-  <div text-center>
-    <h3>Vida restante</h3>
-    <h1>{{life}}</h1>
-  </div>
-  <div text-center>
-    <h3>Sacudidas</h3>
-    <h1>{{sacudidas}}</h1>
-  </div>
-  <div text-center>
-    <h3>Tiempo sin sacudir</h3>
-    <h1>{{timer}}</h1>
-  </div>
-  <!--
+
   <ion-grid>
-    <ion-row *ngFor="let message of messages">
-      
-      <ion-col col-9 *ngIf="message.from !== nickname" class="message" [ngClass]="{'my_message': message.from === nickname, 'other_message': message.from !== nickname}">
-        <span class="user_name">{{ message.from }}:</span><br>
-        <span>{{ message.text }}</span>
-        <div class="time">{{message.created | date:'dd.MM hh:MM'}}</div>
+    <ion-row>
+      <ion-col text-center>
+        <h3>Sacudidas</h3>
+        <h1>{{sacudidas}}</h1>
       </ion-col>
- 
-      <ion-col offset-3 col-9 *ngIf="message.from === nickname" class="message" [ngClass]="{'my_message': message.from === nickname, 'other_message': message.from !== nickname}">
-        <span class="user_name">{{ message.from }}:</span><br>
-        <span>{{ message.text }}</span>
-        <div class="time">{{message.created | date:'dd.MM hh:MM'}}</div>
+      <ion-col text-center>
+        <h3>Tiempo</h3>
+        <h1>{{timer}}</h1>
       </ion-col>
- 
     </ion-row>
   </ion-grid>
--->
 </ion-content>
-<!--
-<ion-footer>
-  <ion-toolbar>
-    <ion-row class="message_row">
-      <ion-col col-9>
-        <ion-item no-lines>
-          <ion-input type="text" placeholder="Message" [(ngModel)]="message"></ion-input>
-        </ion-item>
-      </ion-col>
-      <ion-col col-3>
-        <button ion-button clear color="primary" (click)="sendMessage()" [disabled]="message === ''">
-          Send
-        </button>
-      </ion-col>
-    </ion-row>
-  </ion-toolbar>
-</ion-footer>
--->

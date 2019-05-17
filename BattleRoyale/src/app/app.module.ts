@@ -1,16 +1,19 @@
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
-import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
+import { IonicApp, IonicErrorHandler, IonicModule, NavController } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
-import { GamePage, LobbyPage, PlayerListPage, GameOverPage } from '../pages/pages.index';
+import { GamePage, LobbyPage, PlayerListPage, GameOverPage, ScoreListPage } from '../pages/pages.index';
 
 import { Shake } from '@ionic-native/shake';
+import { NativeAudio } from '@ionic-native/native-audio';
 
 import { SocketIoModule, SocketIoConfig } from 'ng-socket-io';
-const config: SocketIoConfig = { url: 'http://localhost:3001', options: {} };
+import { SocketProvider } from '../providers/socket/socket';
+const config: SocketIoConfig = { url: 'http://10.2.60.32:3001', options: {} };
 
 
 
@@ -21,12 +24,14 @@ const config: SocketIoConfig = { url: 'http://localhost:3001', options: {} };
     GamePage, 
     LobbyPage,
     PlayerListPage, 
-    GameOverPage
+    GameOverPage,
+    ScoreListPage
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    SocketIoModule.forRoot(config)
+    SocketIoModule.forRoot(config),
+    HttpClientModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -34,13 +39,17 @@ const config: SocketIoConfig = { url: 'http://localhost:3001', options: {} };
     GamePage, 
     LobbyPage,
     PlayerListPage, 
-    GameOverPage
+    GameOverPage,
+    ScoreListPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    Shake
+    Shake,
+    NativeAudio,
+    SocketProvider,
+    HttpClient
   ]
 })
 export class AppModule {}

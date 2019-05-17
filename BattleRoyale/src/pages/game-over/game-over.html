@@ -1,17 +1,17 @@
 <ion-content padding>
-  <h1 text-center>Soy un game over :c</h1>
   <div class="center">
     <img src="assets/imgs/explotion.jpg">
   </div>
-
-  <div text-center>
-    <h3>Sacudidas</h3>
-    <h1>{{sacudidas}}</h1>
-  </div>
-
-  <div text-center>
-    <h3>Nickname</h3>
-    <h1>{{nickname}}</h1>
-  </div>
-  <button ion-button block (click)="cerrar()"> Cerrar</button>
+  <h1 text-center>Game Over</h1>
+  <h1 text-center>chale we perdiste</h1>
+  <ion-list>
+    <h4 text-center>Nickname: {{nickname}}</h4>
+    <h3 text-center>Sacudidas: {{sacudidas}}</h3>
+    <p *ngIf="!allgameover">Esperando jugadores...</p>
+    <ion-item>
+    </ion-item>
+  </ion-list>
 </ion-content>
+<ion-footer padding no-border>
+  <button ion-button block [disabled]="!allgameover" (click)="continuar()"> continuar</button>
+</ion-footer>
