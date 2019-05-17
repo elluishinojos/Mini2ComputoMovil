@@ -11,10 +11,10 @@
     <img src="assets/imgs/logo.png">
   </div>
   <ion-item color="bluenormal">
-    <ion-label stacked color="light">Establecer Nickname</ion-label>
+    <ion-label stacked color="light">Establecer Nombre</ion-label>
     <ion-input type="text" [(ngModel)]="nickname" placeholder="Nickname" color="light"></ion-input>
   </ion-item>
   <button round margin-top margin-bottom color="bluelightest" ion-button full (click)="joinGame(true)"
-    [disabled]="nickname === ''">Hostear</button>
+    [disabled]="nickname === ''">Crear Sala</button>
   <button round margin-top ion-button full (click)="joinGame(false)" [disabled]="nickname === ''">Unirse</button>
 </ion-content>
