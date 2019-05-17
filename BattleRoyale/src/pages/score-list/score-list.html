@@ -1,13 +1,13 @@
 <ion-content padding class="fondoazul">
   <div class="center">
     <img src="assets/imgs/logo.png">
-    <p>RESULTADOS:</p>
+    <p text-center color="light">RESULTADOS:</p>
   </div>
   <ion-grid>
     <ion-row>
-      <ion-col offset-2 col-8>
+      <ion-col>
         <ion-list>
-          <ion-item *ngFor="let player of players; let lugar = index">
+          <ion-item color="bluelightest" *ngFor="let player of players; let lugar = index">
             <span>{{lugar+1}}.- {{player.name}} - {{player.score}} sacudidas</span>
           </ion-item>
         </ion-list>
@@ -15,3 +15,6 @@
     </ion-row>
   </ion-grid>
 </ion-content>
+<ion-footer padding no-border>
+  <button round color="bluelightest" ion-button block (click)="cerrar()">Salir</button>
+</ion-footer>

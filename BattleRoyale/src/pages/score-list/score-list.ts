@@ -8,20 +8,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class ScoreListPage {
 
-  players: any[] = [
-    {
-      name: "pepe",
-      score: 155
-    },
-    {
-      name: "lupe",
-      score: 144
-    },
-    {
-      name: "chepe",
-      score: 133   
-    }
-  ];
+  players: any[] = [];
   nickname: string;
   sacudidas: number;
 
