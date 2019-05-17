@@ -34,7 +34,6 @@ export class GamePage {
   ) {
     this.mediaSound = SOUNDS.slice(0);
     this.nativeAudio.preloadSimple('ticking', 'assets/sounds/ticking.wav').then(() => {
-
       this.nativeAudio.loop('ticking').then(() => console.log('uniqueId1 is done playing'));
     });
 
@@ -49,6 +48,8 @@ export class GamePage {
     })
 
     this.nickname = this.navParams.get('nickname');
+
+    console.log(this.nickname);
 
     //this.socket.getMessages().subscribe(message => {
     //  this.messages.push(message);
@@ -93,7 +94,7 @@ export class GamePage {
 
   gameOver() {
     this.navCtrl.push(GameOverPage, { 'shake': this.sacudidas, 'nickname': this.nickname });
-    this.socket.getSocket().emit('game-over',{name:this.nickname, sacudidas:this.sacudidas});
+    this.socket.getSocket().emit('game-over', { name: this.nickname, sacudidas: this.sacudidas });
     this.socket.disconnect();
   }
 
@@ -104,7 +105,7 @@ export class GamePage {
 
   ionViewWillLeave() {
 
-    this.nativeAudio.unload('ticking').then(()=>{});
+    this.nativeAudio.unload('ticking').then(() => { });
   }
 
   showToast(msg) {
