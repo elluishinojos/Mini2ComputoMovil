@@ -1,5 +1,3 @@
-import { GamePage } from './../../pages/game/game';
-import { NavController } from 'ionic-angular';
 import { Observable } from 'rxjs/Observable';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -17,13 +15,10 @@ export class SocketProvider {
   hosts=[];
   loosers=[];
 
-  constructor(public http: HttpClient, public socket: Socket, public navCtrl: NavController) {
+  constructor(public http: HttpClient, public socket: Socket) {
     this.socket.on('loosers', (array)=>{
       this.loosers=array;
     });
-    this.socket.on('start', (name)=>{
-      this.navCtrl.push(GamePage, { nickname: name });
-    })
   }
 
   getUsers() {

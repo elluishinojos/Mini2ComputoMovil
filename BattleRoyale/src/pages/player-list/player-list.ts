@@ -21,6 +21,10 @@ export class PlayerListPage {
 
     this.nickname = this.navParams.get('nickname');
     this.usuario = this.navParams.get('tipo');
+    console.log(this.nickname);
+    this.socket.getSocket().on('start', (name) => {
+      this.navCtrl.push(GamePage, { nickname: this.nickname });
+    })
   }
 
   startGame() {

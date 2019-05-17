@@ -2,15 +2,16 @@
   <div class="center">
     <img src="assets/imgs/explotion.jpg">
   </div>
-  <h1 text-center>Soy un game over :c</h1>
+  <h1 text-center>Game Over</h1>
+  <h1 text-center>chale we perdiste</h1>
   <ion-list>
     <h4>Nickname: {{nickname}}</h4>
     <h3>Sacudidas: {{sacudidas}}</h3>
-    <p>Esperando jugadores...</p>
+    <p *ngIf="!allgameover">Esperando jugadores...</p>
     <ion-item>
     </ion-item>
   </ion-list>
 </ion-content>
 <ion-footer padding no-border>
-  <button ion-button block [disabled]="allgameover" (click)="continuar()"> continuar</button>
+  <button ion-button block [disabled]="!allgameover" (click)="continuar()"> continuar</button>
 </ion-footer>
