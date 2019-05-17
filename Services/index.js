@@ -2,13 +2,18 @@ let app = require('express')();
 let http = require('http').Server(app);
 let io = require('socket.io')(http);
 
-var hosts = [], losers = [];
+var hosts = [], clients = [], losers = [];
 
 io.on('connection', (socket) => {
 
   socket.on('host', (hostObj) => {
     console.log(hostObj);
     hosts.push(hostObj);
+  });
+
+  socket.on('cliente', (clientObj)=>{
+    console.log(clientObj);
+    clients.push(clientObj);
   });
 
   socket.on('disconnect', function () {
@@ -25,13 +30,14 @@ io.on('connection', (socket) => {
   //});
 
   socket.on('game-start', (nickname) => {
+    socket.emit('start', nickname);
     socket.broadcast.emit('start', nickname);
   });
 
   socket.on('game-over', (playerObj) => {
     console.log(playerObj);
     losers.push(playerObj);
-    socket.broadcast.emit('loosers', JSON.stringify(losers));
+    socket.broadcast.emit('loosers', losers);
   })
 });
 
